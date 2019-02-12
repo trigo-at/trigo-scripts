@@ -1,10 +1,9 @@
 #!/bin/bash
 
-if [ $npm_package_name = "@trigo/trigo-scripts" ]
-then
-    echo Own Package. Exiting
+case "$INIT_CWD" in *trigo-scripts)
+   echo Own Package. Exiting
     exit 0
-fi
+esac
 
 APP_TYPE=service
 
