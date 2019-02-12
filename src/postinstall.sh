@@ -22,7 +22,7 @@ cp -n files/generated-marker $INIT_CWD/Makefile
 sed -i -ne "/### BEGIN GENERATED CONTENT ###/ {p; r files/Makefile" -e ":a; n; /### END GENERATED CONTENT ###/ {p; b}; ba}; p" $INIT_CWD/Makefile
 
 if [ ! -f "$INIT_CWD/.eslintrc.json" ]; then
-    cp -f files/.eslintrc.node.json $INIT_CWD
+    cp -f files/.eslintrc.node.json $INIT_CWD/.eslintrc.json
 fi
 
 # merge json files by overwriting existing keys but keep extra keys
@@ -36,7 +36,7 @@ mv -f $INIT_CWD/.eslinttmp.json $INIT_CWD/.eslintrc.json
 
 if [ -f "$INIT_CWD/package.json" ]; then
     jq -s 'reduce .[] as $d ({}; . *= $d)' $INIT_CWD/package.json files/package-template.json > $INIT_CWD/packagetmp.json
-mv -f $INIT_CWD/packagetmp.json $INIT_CWD/package.json
+    mv -f $INIT_CWD/packagetmp.json $INIT_CWD/package.json
 fi
 
 # immutable files
