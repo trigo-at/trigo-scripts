@@ -12,7 +12,10 @@ if [ -f "$INIT_CWD/.trigorc" ]; then
 fi
 
 # merge plain text files by comment marker
-for FILENAME in .gitignore .editorconfig .eslintignore .prettierignore .dockerignore
+cp -n files/generated-marker $INIT_CWD/.gitignore
+sed -i -ne "/### BEGIN GENERATED CONTENT ###/ {p; r files/gitignore" -e ":a; n; /### END GENERATED CONTENT ###/ {p; b}; ba}; p" $INIT_CWD/.gitignore
+
+for FILENAME in .editorconfig .eslintignore .prettierignore .dockerignore
 do
 	cp -n files/generated-marker $INIT_CWD/$FILENAME
 	sed -i -ne "/### BEGIN GENERATED CONTENT ###/ {p; r $FILENAME" -e ":a; n; /### END GENERATED CONTENT ###/ {p; b}; ba}; p" $INIT_CWD/$FILENAME
@@ -51,4 +54,4 @@ cp -f files/Jenkinsfile $INIT_CWD
 
 # install peer dependencies
 
-(pushd "../../.." && npx install-peerdeps @trigo/trigo-scripts --auth $NPM_TOKEN --only-peers && npx install-peerdeps eslint-config-trigo --only-peers)
+(pushd "../../.." && npx install-peerdeps @trigo/trigo-scripts --auth $NPM_TOKEN && npx install-peerdeps eslint-config-trigo)

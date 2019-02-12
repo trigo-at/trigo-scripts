@@ -1,0 +1,8 @@
+node_modules
+dist/
+.npmrc
+.vscode
+.idea/
+yarn-error.log
+.DS_Store
+vimrc
