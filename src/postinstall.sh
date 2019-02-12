@@ -51,4 +51,4 @@ cp -f files/Jenkinsfile $INIT_CWD
 
 # install peer dependencies
 
-(cd ../../.. && npx install-peerdeps @trigo/trigo-scripts --auth $NPM_TOKEN --silent --only-peers)
+(cd ../../.. && npx install-peerdeps @trigo/trigo-scripts --auth $NPM_TOKEN --dev --only-peers)
