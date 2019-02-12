@@ -1,0 +1,58 @@
+{
+  "name": "@trigo/trigo-scripts",
+  "version": "0.0.18",
+  "description": "trigo Packaged Development Defaults",
+  "scripts": {
+    "postinstall": "src/postinstall.sh",
+    "lint": "eslint \"**/*.{js,jsx}\"",
+    "prettify": "prettier --write '**/*.{js,jsx}'",
+    "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
+    "check": "npm run lint",
+    "build": "npm run prettify",
+    "start": "echo \"Error: no start specified\" && exit 1",
+    "test:unit": "echo \"Error: no test:unit specified\" && exit 1",
+    "test:integration": "echo \"Error: no test:integration specified\" && exit 1",
+    "test:e2e": "echo \"Error: no test:e2e specified\" && exit 1",
+    "dist:check": "echo \"Error: no dist:check specified\" && exit 1",
+    "dist:start": "echo \"Error: no dist:start specified\" && exit 1",
+    "dist:start:dev": "echo \"Error: no dist:start:dev specified\" && exit 1"
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "prettier --write",
+      "eslint \"**/*.{js,jsx}\"",
+      "git add"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:trigo-at/trigo-scripts.git"
+  },
+  "keywords": [
+    "trigo"
+  ],
+  "author": "trigo GmbH <office@trigo.at>",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^5.13.0",
+    "eslint-config-prettier": "^4.0.0",
+    "eslint-config-trigo": "^6.2.7",
+    "eslint-plugin-prettier": "^3.0.1",
+    "husky": "^1.3.1",
+    "lint-staged": "^8.1.3",
+    "prettier": "^1.16.4"
+  },
+  "peerDependencies": {
+    "eslint-config-prettier": "^4.0.0",
+    "eslint-config-trigo": "^6.2.7",
+    "eslint-plugin-prettier": "^3.0.1",
+    "husky": "^1.3.1",
+    "lint-staged": "^8.1.3",
+    "prettier": "^1.16.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
+}

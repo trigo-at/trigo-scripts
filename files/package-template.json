@@ -1,0 +1,25 @@
+{
+    "author": "trigo GmbH <office@trigo.at>",
+    "scripts": {
+        "check": "npm run lint",
+        "build": "npm run prettify",
+        "start": "echo \"Error: no start specified\" && exit 1",
+        "test:unit": "echo \"Error: no test:unit specified\" && exit 1",
+        "test:integration": "echo \"Error: no test:integration specified\" && exit 1",
+        "test:e2e": "echo \"Error: no test:e2e specified\" && exit 1",
+        "dist:check": "echo \"Error: no dist:check specified\" && exit 1",
+        "dist:start": "echo \"Error: no dist:start specified\" && exit 1",
+        "dist:start:dev": "echo \"Error: no dist:start:dev specified\" && exit 1",
+        "lint": "eslint \"**/*.{js,jsx}\"",
+        "prettify": "prettier --write '**/*.{js,jsx}'",
+        "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
+        "precommit": "lint-staged"
+    },
+    "lint-staged": {
+        "*.{js,jsx}": [
+            "prettier --write",
+            "eslint \"**/*.{js,jsx}\"",
+            "git add"
+        ]
+    },
+}

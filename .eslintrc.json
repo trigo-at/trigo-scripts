@@ -1,0 +1,12 @@
+{
+  "extends": [
+    "trigo",
+    "prettier"
+  ],
+  "plugins": [
+    "prettier"
+  ],
+  "env": {
+    "node": true
+  }
+}

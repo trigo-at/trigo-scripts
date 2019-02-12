@@ -1,0 +1,55 @@
+.PHONY: clean install dist test build start start-dev update test-unit test-integration test-e2e dist-check dist-start dist-start-dev dist-start-dependencies
+
+include .trigorc
+
+DOCKER_IMAGE:=$(DOCKER_REGISTRY)/$(PROJECT_PREFIX)/$(SERVICE)
+
+clean:
+	@rm -rf node_modules/
+	@rm -rf dist/
+
+install-dependencies:
+	@npm install
+
+install: install-dependencies build
+
+dist:
+	@docker build --build-arg NPM_TOKEN -t $(DOCKER_IMAGE) .
+
+check:
+	@npm run check
+
+test: check
+
+build:
+	@npm run build
+
+start:
+	@npm start
+
+start-dev:
+	@npm run start:dev
+
+update:
+	@npm update
+
+test-unit:
+	@npm run test:unit
+
+test-integration:
+	@npm run test:integration
+
+test-e2e:
+	@npm run test:e2e
+
+dist-check:
+	@npm dist:check
+
+dist-start:
+	@npm dist:start
+
+dist-start-dev:
+	@npm dist:start:dev
+
+dist-start-dependencies: dist-start-dev
+
