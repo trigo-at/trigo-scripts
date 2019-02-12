@@ -1,6 +1,6 @@
 {
   "name": "@trigo/trigo-scripts",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "trigo Packaged Development Defaults",
   "scripts": {
     "postinstall": "src/postinstall.sh",
