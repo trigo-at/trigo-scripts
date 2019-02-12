@@ -5,7 +5,7 @@ case "$INIT_CWD" in *trigo-scripts)
     exit 0
 esac
 
-APP_TYPE=service
+APP_TYPE=node
 
 if [ -f "$INIT_CWD/.trigorc" ]; then
     . $INIT_CWD/.trigorc
@@ -51,4 +51,4 @@ cp -f files/Jenkinsfile $INIT_CWD
 
 # install peer dependencies
 
-(cd ../../.. && npx install-peerdeps @trigo/trigo-scripts --auth $NPM_TOKEN --dev --only-peers)
+(cd ../../.. && npx install-peerdeps @trigo/trigo-scripts --auth $NPM_TOKEN)
