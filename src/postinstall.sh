@@ -1,5 +1,11 @@
 #!/bin/bash
 
+if [ $npm_package_name = "@trigo/trigo-scripts" ]
+then
+    echo Own Package. Exiting
+    exit 0
+fi
+
 APP_TYPE=service
 
 if [ -f "$INIT_CWD/.trigorc" ]; then
